@@ -28,7 +28,8 @@ printf "\rProgress : [${done// /#}${undone// /-}] ${precentage}%%"
 # login to docker
 docker login
 
-# Start minishift and find address
+# Create profile start minishift and find address
+minishift profile set rhmap-4x
 minishift start --memory="10GB" --disk-size="69GB" --cpus=6
 IP=$(minishift ip)
 echo $IP
