@@ -28,9 +28,9 @@ printf "\rProgress : [${done// /#}${undone// /-}] ${precentage}%%"
 # login to docker
 docker login
 
-echo Enter your minishift ip only e.g. 192.168.64.4:
-read IP
-echo " "
+# Start minishift and find address
+minishift start --memory="10GB" --disk-size="69GB" --cpus=6
+IP=$(minishift ip)
 echo $IP
 echo " "
 echo "IP address set in inventory file"
