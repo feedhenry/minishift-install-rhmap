@@ -1,5 +1,5 @@
 #!/bin/bash
-if [[ $1 = "-oc" ]]   
+if [[ $1 = "-oc" ]] || [[ $2 = "-oc" ]]   
 then
     echo "            _____ _           _            _   _      ______ _   _ ___  ___  ___  ______ "
     echo "           /  __ \ |         | |          | | | |     | ___ \ | | ||  \/  | / _ \ | ___ \\"
@@ -43,7 +43,7 @@ printf "\rProgress : [${done// /#}${undone// /-}] ${precentage}%%"
 docker login
 
 # Create profile start minishift and find address
-if [[ $1 = "-oc"]]
+if [[ $1 = "-oc" ]] || [[ $2 = "-oc" ]]   
 then
     IP=127.0.0.1
     oc cluster up --use-existing-config=true --host-data-dir=$HOMEg/vm/data
@@ -84,7 +84,7 @@ echo "observe project and set secret"
 
 
 # Delete existing project if "./setup-rhmap.sh -c"
-if [[ $1 = "-c" ]]
+if [[ $1 = "-c" ]] || [[ $2 = "-c" ]]   
 then
     echo "Deleting existing projects"
     oc delete project rhmap-core > /dev/null 2>&1
