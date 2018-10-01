@@ -55,6 +55,7 @@ then
 fi
 
 # # setting the docker pull secret for any new pod
+oc cluster up --use-existing-config=true --host-data-dir=~/vm/data
 oc login https://$IP:8443 -u developer -p developer
 
 # kill and remove existing observe process
