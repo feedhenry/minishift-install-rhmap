@@ -34,6 +34,7 @@ The script does the following
 - Make the script runable `chmod 775 setup-rhmap.sh`
 - Run the script `./setup-rhmap.sh`
 - For clean install run `./setup-rhmap.sh -c` this removes existing `rhmap-core` and `rhmap-1-node-mbaas` projects.
+- For use with `oc cluster up` use `./setup-rhmap.sh -oc` 
 
 ## Issues
 Make sure the paths in the script match you local directory structure
