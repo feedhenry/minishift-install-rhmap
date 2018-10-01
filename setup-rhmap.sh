@@ -1,15 +1,29 @@
 #!/bin/bash
-echo " "
-echo "___  ____       _     _     _  __ _        ______ _   _ ___  ___  ___  ______ "
-echo "|  \/  (_)     (_)   | |   (_)/ _| |       | ___ \ | | ||  \/  | / _ \ | ___ \\"
-echo "| .  . |_ _ __  _ ___| |__  _| |_| |_   __ | |_/ / |_| || .  . |/ /_\ \| |_/ /"
-echo "| |\/| | | '_ \| / __| '_ \| |  _| __| |__||    /|  _  || |\/| ||  _  ||  __/ "
-echo "| |  | | | | | | \__ \ | | | | | | |_      | |\ \| | | || |  | || | | || |    "
-echo "\_|  |_/_|_| |_|_|___/_| |_|_|_|  \__|     \_| \_\_| |_/\_|  |_/\_| |_/\_|    "
-echo " "
-echo " "
+if [[ $1 = "-oc" ]]   
+then
+    echo "            _____ _           _            _   _      ______ _   _ ___  ___  ___  ______ "
+    echo "           /  __ \ |         | |          | | | |     | ___ \ | | ||  \/  | / _ \ | ___ \\"
+    echo "  ___   ___| /  \/ |_   _ ___| |_ ___ _ __| | | |_ __ | |_/ / |_| || .  . |/ /_\ \| |_/ /"
+    echo " / _ \ / __| |   | | | | / __| __/ _ \ '__| | | | '_ \|    /|  _  || |\/| ||  _  ||  __/ "
+    echo "| (_) | (__| \__/\ | |_| \__ \ ||  __/ |  | |_| | |_) | |\ \| | | || |  | || | | || |    "
+    echo " \___/ \___|\____/_|\__,_|___/\__\___|_|   \___/| .__/\_| \_\_| |_/\_|  |_/\_| |_/\_|    "
+    echo "                                                | |                                      "
+    echo "                                                |_|                                      "
+    echo " "
+    echo " "                                                                         
+else
+    echo " "
+    echo "___  ____       _     _     _  __ _        ______ _   _ ___  ___  ___  ______ "
+    echo "|  \/  (_)     (_)   | |   (_)/ _| |       | ___ \ | | ||  \/  | / _ \ | ___ \\"
+    echo "| .  . |_ _ __  _ ___| |__  _| |_| |_   __ | |_/ / |_| || .  . |/ /_\ \| |_/ /"
+    echo "| |\/| | | '_ \| / __| '_ \| |  _| __| |__||    /|  _  || |\/| ||  _  ||  __/ "
+    echo "| |  | | | | | | \__ \ | | | | | | |_      | |\ \| | | || |  | || | | || |    "
+    echo "\_|  |_/_|_| |_|_|___/_| |_|_|_|  \__|     \_| \_\_| |_/\_|  |_/\_| |_/\_|    "
+    echo " "
+    echo " "
+fi
 
-                                                                               
+
 
 function Progress {
 	let precentage=(${1}*100/${2}*100)/100
@@ -29,9 +43,15 @@ printf "\rProgress : [${done// /#}${undone// /-}] ${precentage}%%"
 docker login
 
 # Create profile start minishift and find address
-minishift profile set rhmap-4x
-minishift start --memory="10GB" --disk-size="69GB" --cpus=6
-IP=$(minishift ip)
+if [[ $1 = "-oc"]]
+then
+    IP=127.0.0.1
+    oc cluster up --use-existing-config=true --host-data-dir=$HOMEg/vm/data
+else 
+    minishift profile set rhmap-4x
+    minishift start --memory="10GB" --disk-size="69GB" --cpus=6
+    IP=$(minishift ip)
+fi
 echo $IP
 echo " "
 echo "IP address set in inventory file"
