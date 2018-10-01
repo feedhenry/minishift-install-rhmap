@@ -46,7 +46,7 @@ docker login
 if [[ $1 = "-oc"]]
 then
     IP=127.0.0.1
-    oc cluster up --use-existing-config=true --host-data-dir=~/vm/data
+    oc cluster up --use-existing-config=true --host-data-dir=$HOMEg/vm/data
 else 
     minishift profile set rhmap-4x
     minishift start --memory="10GB" --disk-size="69GB" --cpus=6
