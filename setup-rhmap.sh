@@ -73,6 +73,7 @@ fi
 
 # # setting the docker pull secret for any new pod
 oc login https://$IP:8443 -u developer -p developer
+oc adm policy --as system:admin add-cluster-role-to-user cluster-admin developer
 
 # kill and remove existing observe process
 kill $(ps aux | grep '[o]c_observe_dev' | awk '{print $2}')
