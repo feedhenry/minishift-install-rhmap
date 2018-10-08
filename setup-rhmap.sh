@@ -135,7 +135,7 @@ sudo ansible-playbook -i ~/minishift-example --tags=deploy -e strict_mode=false 
 
 # IMPORTANT!
 # This is needed for local development so projects will eb created successfully. https://issues.jboss.org/browse/RHMAP-20574
-oc env dc/millicore HTTPD_SERVICE_NAME=localhost
+oc env dc/millicore HTTPD_SERVICE_NAME=localhost -n rhmap-core
 
 # details for rhmap
 echo " "
