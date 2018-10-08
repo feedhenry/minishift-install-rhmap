@@ -129,6 +129,7 @@ git pull upstream "$branch"
 
 
 # ansible installer for rhmap
+sudo ansible-playbook -i ~/minishift-example --tags=image_stream -e kubeconfig=~/.kube/config playbooks/poc.yml
 sudo ansible-playbook -i ~/minishift-example --tags=deploy -e strict_mode=false -e core_templates_dir=~/work/fh-core-openshift-templates/generated -e mbaas_templates_dir=~/work/fh-openshift-templates -e mbaas_target_id=test playbooks/poc.yml
 
 
