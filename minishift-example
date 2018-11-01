@@ -6,7 +6,7 @@ mbaas
 [Nodes:vars]
 ansible_connection=local
 target="cluster_up"
-domain_name="my-domain"
+domain_name="rhmap-core"
 git_external_protocol=http
 mbaas_target_id=test
 skip_tls=true
